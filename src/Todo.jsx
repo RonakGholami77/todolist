@@ -1,30 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaTrash } from "react-icons/fa";
 import { TiTick } from "react-icons/ti";
 
 function Todo(props) {
-  const [status, setStatus] = useState("incomplete");
+  const { id, title, completed, onRemove, onEdit } = props;
 
-  const { value, onComplete, list } = props;
-
-  function tickHandler() {
-    setStatus("complete");
+  function edit(id) {
+    onEdit(id);
   }
 
-  function removeHandler() {
-    const newList = list.filter((item) => item !== value);
-    onComplete(newList);
+  function remove(id) {
+    onRemove(id);
   }
 
   return (
     <div>
-      <div className="enter" id={status}>
-        <input type="text" value={value} />
-        <span className="icon">
-          <TiTick onClick={tickHandler} />
+      <div className={`enter ${completed ? "complete" : ""}`}>
+        <input type="text" value={title} />
+        <span className="icon" onClick={() => edit(id)}>
+          <TiTick />
         </span>
-        <span className="icon newback">
-          <FaTrash onClick={removeHandler} />
+        <span className="icon newback" onClick={() => remove(id)}>
+          <FaTrash />
         </span>
       </div>
     </div>

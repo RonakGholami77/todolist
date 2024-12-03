@@ -76,11 +76,9 @@ select {
 .newback {
   background-color: rgb(213, 41, 64);
 }
-#complete {
+.complete {
   text-decoration: line-through;
   opacity: 40%;
 
   text-decoration-color: rgb(110, 234, 110);
-}
-#uncomplete {
 }
